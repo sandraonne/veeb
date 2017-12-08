@@ -13,4 +13,12 @@
  * mitmerealine
  * kommentaar
  */
+
+// Teksti väljastamine
+// print funktsiooniga
+print "See on tavaline tekst<br />\n";
+print 'See on veel üks tavaline tekst<br />';
+// echo käsuga
+echo "See on tavaline tekst jutumärkides<br />\n";
+echo 'See on tavaline tekst ülakomades<br />';
 ?>
