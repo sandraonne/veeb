@@ -1,6 +1,6 @@
 <?php
-$sandra = "Sandra";
-echo "Minu nimi on ".$sandra,".<br />";
+define('MINU_NIMI','Sandra');
+echo "Minu nimi on ".MINU_NIMI,".<br />";
 /**
  * Created by PhpStorm.
  * User: Sandra
