@@ -5,56 +5,67 @@
  * Date: 14.01.2018
  * Time: 13:59
  */
-function registreerimisVorm (){
+function registreerimisVorm(){
     echo '
-    <form action="'.$_SERVER['PHP_SELF'].'" method="post">
-    Eesnimi: <input type="text" name="eesnimi"><br />
-    <br />
-    Perenimi: <input type="text" name="perenimi"><br /><br />
-    Aasta: 
-    <br /><br />
-    Kuu: <select name="kuu">
-            <option value="">Vali kuu</option>
-            <option value="1">Jaanuar</option>
-            <option value="2">Veebruar</option>
-            <option value="3">Märts</option>
-            <option value="4">Aprill</option>
-            <option value="5">Mai</option>
-            <option value="6">Juuni</option>
-            <option value="7">Juuli</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">Oktoober</option>
-            <option value="11">November</option>
-            <option value="12">Detsember</option>
-            </select>
-            <br /><br />
-    Päev: 
-    <br /><br />
-    <input type="submit" value="Registreeri">
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>Eesnimi</td>
+                <td colspan="2"><input type="text" name="eesnimi"></td>
+            </tr>
+            <tr>
+                <td>Perenimi</td>
+                <td colspan="2"><input type="text" name="perenimi"></td>
+            </tr>
+            <tr>
+                <td>Aasta</td>
+                <td>Kuu</td>
+                <td>Päev</td>
+            </tr>
+            <tr>
+                <td>'.aasta().'</td>
+                <td>'.kuu().'</td>
+                <td>'.paev().'</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="Registreeri">
+                </td>
+            </tr>
+        </table>
     </form>
     ';
 }
+
 function aasta(){
-    $start = date('Y');
-    $varasem = 1950;
-    $hilisem = date('Y');
-    print '<select>';
-    foreach (range($hilisem,$varasem) as $item) {
-        print '<option value="'.$item.'"'.($item === $start ? ' selected="selected"' : '').'>'.$item.'</option>';
+    $valik = '<select name="aasta">';
+    for($aasta = 1920; $aasta < 2040; $aasta++){
+        $valik = $valik.'<option value="'.$aasta.'">'.$aasta.'</option>';
     }
+    $valik = $valik.'</select>';
+    return $valik;
 }
 
-function paev() {
-    $start=date('d');
-    $algus = 1;
-    $lopp = 31;
-    print '<select>';
-    foreach (range($lopp,$algus) as $item) {
-        print '<option value="'.$item.'"'.($item === $start ? ' selected="selected"' : '').'>'.$item.'</option>';
+function kuu() {
+    $kuud = array('Jaanuar', 'Veebruar', 'Märts', 'Aprill', 'Mai', 'Juuni', 'Juuli', 'August', 'September', 'Oktoober', 'November', 'Detsember');
+    $valik = '<select name= "kuu">';
+    foreach($kuud as $kuu){
+        $valik = $valik.'<option value="'.$kuu.'">'.$kuu.'</option>';
     }
+    $valik = $valik.'</select>';
+    return $valik;
+}
+
+function paev(){
+    $valik = '<select name="paev">';
+    for($paev = 1; $paev < 32; $paev++){
+        $valik = $valik.'<option value="'.$paev.'">'.$paev.'</option>';
+    }
+    $valik = $valik.'</select>';
+    return $valik;
 }
 
 registreerimisVorm();
-aasta();
-paev();
+echo '<pre>';
+print_r($_POST);
+
