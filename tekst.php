@@ -11,6 +11,13 @@ class tekst
     // klassi omadused = klassi väljad (fields)
     // klassi muutuja (variable)
     var $sone = ''; // teksti kirjeldavad sõnad
+
+    // tekst constructor
+    // @param string $sone
+    public function __construct($sone)
+    {
+        $this->maaraTekst($sone);
+    }
     // klassi tegevused
     // meetodid - funktsioonid, mis suuudavad seletada, kuidas üksik tegevus sooritatakse
     function maaraTekst($sone){ //teksti määramine maaraTekst ('Tere maailm')
